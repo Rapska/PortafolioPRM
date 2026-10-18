@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KPI de cumplimiento documental</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
@@ -30,7 +34,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',syste
 .side nav{display:flex;flex-direction:column;gap:14px;font-family:'Sora',sans-serif;font-size:13px}
 .side nav a{color:#CFEFEA;text-decoration:none;opacity:.85}
 .side-contact{margin-top:auto;display:flex;flex-direction:column;gap:11px;font-size:12px;color:#CFEFEA}
-.side-contact span{display:flex;align-items:center;gap:7px}
+.side-contact span,.side-contact a{display:flex;align-items:center;gap:7px;color:inherit;text-decoration:none}
 .side-contact svg{width:14px;height:14px;flex:none;color:var(--turquesa)}
 
 .main{flex:1;min-width:0}
@@ -82,7 +86,7 @@ article p:last-child{margin-bottom:0}
   margin-top:40px;padding-top:20px;border-top:1px solid var(--border);
   display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);
 }
-.foot-contact span{display:flex;align-items:center;gap:6px}
+.foot-contact span,.foot-contact a{display:flex;align-items:center;gap:6px;color:inherit;text-decoration:none}
 .foot-contact svg{width:14px;height:14px;color:var(--petroleo)}
 </style>
 
@@ -112,7 +116,7 @@ article p:last-child{margin-bottom:0}
     </nav>
     <div class="side-contact">
       <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
-      <span><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</span>
+      <a href="mailto:reyesmoreno.p@gmail.com"><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</a>
       <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
     </div>
   </aside>
@@ -176,7 +180,7 @@ article p:last-child{margin-bottom:0}
 
       <div class="foot-contact">
         <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
-        <span><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</span>
+        <a href="mailto:reyesmoreno.p@gmail.com"><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</a>
         <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
       </div>
     </div>
