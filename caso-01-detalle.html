@@ -39,11 +39,17 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',syste
 
 .main{flex:1;min-width:0}
 .article{max-width:680px;margin:0 auto;padding:36px 24px calc(60px + env(safe-area-inset-bottom,0px))}
+.top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
 .back{
   display:inline-flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-size:12.5px;
-  color:var(--petroleo);text-decoration:none;font-weight:600;margin-bottom:22px;
+  color:var(--petroleo);text-decoration:none;font-weight:600;
 }
 .back svg{width:13px;height:13px}
+.lang{
+  font-family:'Sora',sans-serif;font-size:11px;font-weight:600;color:var(--petroleo);
+  border:1px solid var(--tint-a-b);background:var(--tint-a);border-radius:20px;padding:5px 12px;
+  text-decoration:none;flex:none;
+}
 
 .case-head .eyebrow{font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--petroleo)}
 .case-head h1{
@@ -133,7 +139,10 @@ article p:last-child{margin-bottom:0}
 
   <main class="main">
     <div class="article">
-      <a class="back" href="index.html#proyectos"><svg><use href="#ic-back"/></svg>Volver a proyectos</a>
+      <div class="top-row">
+        <a class="back" href="index.html#proyectos"><svg><use href="#ic-back"/></svg>Volver a proyectos</a>
+        <a class="lang" href="caso-01-detalle-en.html">EN</a>
+      </div>
 
       <div class="case-head">
         <span class="eyebrow">Optimización y mejora continua · Caso 01</span>

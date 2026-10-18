@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pietro Reyes Moreno</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Dirección: identidad RAPSKA (petróleo/turquesa/Sora) + sidebar fija + cards de dos tonos. Marca propia, mundo visual único y deliberado (no reactivo a tema claro/oscuro del sistema). */
+:root{
+  --petroleo:#155E75; --petroleo-dark:#0E4A5E; --turquesa:#40E0D0;
+  --ink:#10303B; --paper:#FFFFFF; --tint-a:#EAFBF8; --tint-a-b:#BFEDE6;
+  --tint-b:#EAF3F5; --tint-b-b:#CBDCE0; --muted:#5C7A82; --border:#E1EDEE;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+}
+.shell{display:flex;min-height:100vh}
+@media (max-width:760px){ .shell{flex-direction:column;min-height:0} }
+
+/* ---- Sidebar ---- */
+.side{
+  width:230px;flex:none;background:var(--petroleo);color:#EAFBF8;
+  display:flex;flex-direction:column;gap:28px;
+  padding:28px 20px calc(20px + env(safe-area-inset-bottom,0px));
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+}
+@media (max-width:760px){
+  .side{width:100%;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;flex-wrap:wrap}
+  .side .brand-block,.side nav,.side .side-contact{flex:none}
+  .side nav{flex-direction:row!important;gap:14px}
+  .side .side-contact{display:none}
+}
+.brand-block{display:flex;align-items:center;gap:10px}
+.brand-block svg{width:26px;height:26px;color:var(--turquesa)}
+.brand-block .name{font-family:'Sora',sans-serif;font-weight:600;font-size:15px;line-height:1.25}
+.side nav{display:flex;flex-direction:column;gap:14px;font-family:'Sora',sans-serif;font-size:13px}
+.side nav a{color:#CFEFEA;text-decoration:none;opacity:.85}
+.side nav a.active{color:#fff;opacity:1}
+.side-contact{margin-top:auto;display:flex;flex-direction:column;gap:11px;font-size:12px;color:#CFEFEA}
+.side-contact span,.side-contact a{display:flex;align-items:center;gap:7px;color:inherit;text-decoration:none}
+.side-contact svg{width:14px;height:14px;flex:none;color:var(--turquesa)}
+
+/* ---- Main ---- */
+.main{flex:1;min-width:0}
+.topbar{
+  display:flex;justify-content:flex-end;align-items:center;
+  padding:20px max(24px, env(safe-area-inset-right,0px)) 0 24px;
+}
+.lang{
+  font-family:'Sora',sans-serif;font-size:11px;font-weight:600;color:var(--petroleo);
+  border:1px solid var(--tint-a-b);background:var(--tint-a);border-radius:20px;padding:5px 12px;
+  text-decoration:none;display:inline-block;
+}
+.hero{padding:18px 24px 8px;max-width:640px}
+.hero h1{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:30px;line-height:1.2;margin:0 0 10px;text-wrap:balance;
+}
+.hero p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+
+.section-label{
+  font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--petroleo);margin:36px 24px 14px;
+}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:0 24px}
+@media (max-width:560px){ .cards{grid-template-columns:1fr} }
+.card{
+  border-radius:14px;padding:20px;border:1px solid var(--border);
+  display:flex;flex-direction:column;gap:10px;
+  text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(21,94,117,.12)}
+.card.a{background:var(--tint-a);border-color:var(--tint-a-b)}
+.card.b{background:var(--tint-b);border-color:var(--tint-b-b)}
+.card .eyebrow{font-family:'Sora',sans-serif;font-size:10.5px;letter-spacing:.07em;color:var(--petroleo);font-weight:600}
+.card h3{margin:0;font-family:'Sora',sans-serif;font-size:16px;font-weight:600;line-height:1.3}
+.card p{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
+.card.wide{grid-column:1/-1}
+.badges{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.badge{
+  display:flex;align-items:center;gap:5px;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;
+  padding:5px 10px;border-radius:20px;
+}
+.badge svg{width:11px;height:11px;flex:none}
+.badge.dhl{background:var(--petroleo-dark);color:#fff}
+.badge.rapska{background:var(--turquesa);color:var(--petroleo-dark)}
+
+.highlight{
+  margin:20px 24px 0;padding:16px 20px;border-left:3px solid var(--turquesa);
+  background:var(--tint-a);border-radius:0 10px 10px 0;
+}
+.highlight .eyebrow{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.07em;color:var(--petroleo)}
+.highlight p{margin:6px 0 0;font-size:13px;color:var(--ink);line-height:1.55;max-width:70ch}
+
+.site-footer{
+  margin-top:48px;background:var(--petroleo);color:#EAFBF8;
+  padding:28px 24px calc(28px + env(safe-area-inset-bottom,0px));
+  display:flex;flex-direction:column;gap:14px;
+}
+.site-footer .f-brand{display:flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-weight:600;font-size:14px}
+.site-footer .f-brand svg{width:18px;height:18px;color:var(--turquesa)}
+.site-footer .f-tag{font-size:12.5px;color:#CFEFEA;max-width:52ch;line-height:1.55;margin:0}
+.site-footer .f-contact{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#CFEFEA}
+.site-footer .f-contact span,.site-footer .f-contact a{display:flex;align-items:center;gap:6px;color:inherit;text-decoration:none}
+.site-footer .f-contact svg{width:13px;height:13px;flex:none;color:var(--turquesa)}
+.site-footer .f-meta{font-size:11px;color:#8FC9C0;margin-top:2px}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<g id="ic-compass"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 6l1.8 4.2L18 12l-4.2 1.8L12 18l-1.8-4.2L6 12l4.2-1.8z" fill="currentColor"/></g>
+<g id="ic-case"><rect x="3" y="7" width="18" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 7v12M12 7v12M16.5 7v12M3 12h18" fill="none" stroke="currentColor" stroke-width="1.1"/></g>
+<g id="ic-li"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8.3" r="1.3" fill="currentColor"/><path d="M8 11v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 17v-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 13.5c0-1.5 1-2.3 2.1-2.3 1.1 0 1.9.8 1.9 2.3V17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-mail"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-chat"><path d="M12 3.6c-4.7 0-8.4 3.6-8.4 8 0 1.8.6 3.4 1.7 4.7L4.3 20l3.9-1.1c1.2.6 2.5.9 3.8.9 4.7 0 8.4-3.6 8.4-8s-3.7-8.2-8.4-8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.2 10.1c0 2.7 2.2 4.9 4.9 4.9.4 0 .7-.3.7-.7v-.8c0-.3-.2-.5-.4-.6l-1.2-.4c-.2-.1-.5 0-.6.2l-.3.4c-.9-.5-1.6-1.2-2.1-2.1l.4-.3c.2-.1.3-.4.2-.6l-.4-1.2c-.1-.2-.3-.4-.6-.4h-.8c-.4 0-.7.3-.8.7z" fill="currentColor"/></g>
+</defs>
+</svg>
+
+<div class="shell">
+  <aside class="side">
+    <div class="brand-block">
+      <svg><use href="#ic-compass"/></svg>
+      <div class="name">Pietro<br>Reyes Moreno</div>
+    </div>
+    <nav>
+      <a class="active" href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="side-contact">
+      <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
+      <a href="mailto:reyesmoreno.p@gmail.com"><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</a>
+      <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar"><a class="lang" href="index.html">ES</a></div>
+
+    <div class="hero" id="home">
+      <h1>Operations, process improvement, and digital solutions.</h1>
+      <p>Hi, I'm Pietro. I coordinate international freight forwarding operations and spot bottlenecks, waste, and outdated processes. I propose solutions the team actually adopts, with less manual work and less room for error. In my portfolio you'll find everything from tracking dashboards to a digital product of my own.</p>
+    </div>
+
+    <div class="section-label" id="projects">Featured projects</div>
+    <div class="cards">
+      <a class="card a" href="caso-01-detalle-en.html">
+        <span class="eyebrow">Case 01</span>
+        <h3>PO↔SO lookup automation</h3>
+        <p>From a week to a day to issue the Shipping Order — an operational pilot live in under a week.</p>
+        <div class="badges"><span class="badge dhl"><svg><use href="#ic-case"/></svg>DHL Global Forwarding</span></div>
+      </a>
+      <a class="card b" href="caso-02-detalle-en.html">
+        <span class="eyebrow">Case 02</span>
+        <h3>Document compliance KPI</h3>
+        <p>A client complaint with no data to back it — until an objective indicator showed only 6.5% of the real delays were the team's responsibility.</p>
+        <div class="badges"><span class="badge dhl"><svg><use href="#ic-case"/></svg>DHL Global Forwarding</span></div>
+      </a>
+      <a class="card a wide" href="caso-03-detalle-en.html">
+        <span class="eyebrow">Case 03</span>
+        <h3>Document tracking dashboard</h3>
+        <p>From a spreadsheet cross-checked by hand to an always-current dashboard, with full team adoption in a month.</p>
+        <div class="badges"><span class="badge dhl"><svg><use href="#ic-case"/></svg>DHL Global Forwarding</span></div>
+      </a>
+      <a class="card b" href="caso-04-detalle-en.html">
+        <span class="eyebrow">Case 04</span>
+        <h3>LCL rate calculator</h3>
+        <p>From three coordinators getting three different results for the same calculation, to a standardized quote in seconds.</p>
+        <div class="badges"><span class="badge dhl"><svg><use href="#ic-case"/></svg>DHL Global Forwarding</span></div>
+      </a>
+      <a class="card a" href="caso-05-detalle-en.html">
+        <span class="eyebrow">Case 05</span>
+        <h3>Request ticketing system</h3>
+        <p>From loose chat requests with no record or follow-up, to a form with ticket number, priority, and a documented response.</p>
+        <div class="badges"><span class="badge dhl"><svg><use href="#ic-case"/></svg>DHL Global Forwarding</span></div>
+      </a>
+      <a class="card b wide" href="caso-06-detalle-en.html">
+        <span class="eyebrow">Case 06</span>
+        <h3>RAPSKA — turning a complex migration process into a guided experience</h3>
+        <p>My own brand and digital product helping Spanish speakers through the Germany Working Holiday — from zero to an app with an active community.</p>
+        <div class="badges"><span class="badge rapska"><svg><use href="#ic-compass"/></svg>RAPSKA</span></div>
+      </a>
+    </div>
+
+    <div class="highlight">
+      <span class="eyebrow">Leadership</span>
+      <p>A month as backup for my team's Senior Coordinator (6 people) — integrative negotiation that ended up being adopted as a general rule, not just a one-off fix.</p>
+    </div>
+
+    <footer class="site-footer" id="contact">
+      <div class="f-brand"><svg><use href="#ic-compass"/></svg>Pietro Reyes Moreno</div>
+      <p class="f-tag">Operations, process improvement, and digital solutions.</p>
+      <div class="f-contact">
+        <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
+        <a href="mailto:reyesmoreno.p@gmail.com"><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</a>
+        <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
+      </div>
+      <div class="f-meta">Portfolio updated · 2026</div>
+    </footer>
+  </main>
+</div>
