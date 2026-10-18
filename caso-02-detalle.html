@@ -1,0 +1,183 @@
+<title>Panel de seguimiento y KPI</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Misma identidad y estructura que la página de detalle del Caso 01. */
+:root{
+  --petroleo:#155E75; --petroleo-dark:#0E4A5E; --turquesa:#40E0D0;
+  --ink:#10303B; --paper:#FFFFFF; --tint-a:#EAFBF8; --tint-a-b:#BFEDE6;
+  --muted:#5C7A82; --border:#E1EDEE;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif}
+.shell{display:flex;min-height:100vh}
+@media (max-width:760px){ .shell{flex-direction:column;min-height:0} }
+
+.side{
+  width:230px;flex:none;background:var(--petroleo);color:#EAFBF8;
+  display:flex;flex-direction:column;gap:28px;
+  padding:28px 20px calc(20px + env(safe-area-inset-bottom,0px));
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+}
+@media (max-width:760px){
+  .side{width:100%;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;flex-wrap:wrap}
+  .side nav{flex-direction:row!important;gap:14px}
+  .side .side-contact{display:none}
+}
+.brand-block{display:flex;align-items:center;gap:10px}
+.brand-block svg{width:26px;height:26px;color:var(--turquesa)}
+.brand-block .name{font-family:'Sora',sans-serif;font-weight:600;font-size:15px;line-height:1.25}
+.side nav{display:flex;flex-direction:column;gap:14px;font-family:'Sora',sans-serif;font-size:13px}
+.side nav a{color:#CFEFEA;text-decoration:none;opacity:.85}
+.side-contact{margin-top:auto;display:flex;flex-direction:column;gap:11px;font-size:12px;color:#CFEFEA}
+.side-contact span{display:flex;align-items:center;gap:7px}
+.side-contact svg{width:14px;height:14px;flex:none;color:var(--turquesa)}
+
+.main{flex:1;min-width:0}
+.article{max-width:680px;margin:0 auto;padding:36px 24px calc(60px + env(safe-area-inset-bottom,0px))}
+.back{
+  display:inline-flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-size:12.5px;
+  color:var(--petroleo);text-decoration:none;font-weight:600;margin-bottom:22px;
+}
+.back svg{width:13px;height:13px}
+
+.case-head .eyebrow{font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--petroleo)}
+.case-head h1{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:28px;line-height:1.2;margin:8px 0 10px;text-wrap:balance;
+}
+.case-head .dek{font-size:15px;color:var(--muted);line-height:1.55;margin:0 0 18px;max-width:60ch}
+.badges{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.badge{
+  display:flex;align-items:center;gap:5px;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;
+  padding:5px 10px;border-radius:20px;
+}
+.badge svg{width:11px;height:11px;flex:none}
+.badge.dhl{background:var(--petroleo-dark);color:#fff}
+
+.meta-row{
+  display:flex;gap:24px;flex-wrap:wrap;padding:14px 0;margin-bottom:28px;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.meta-row div{font-size:12px}
+.meta-row span{display:block;font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--petroleo);margin-bottom:3px}
+.meta-row p{margin:0;color:var(--ink)}
+
+article section{margin-bottom:28px}
+article h2{font-family:'Sora',sans-serif;font-size:16px;font-weight:600;margin:0 0 10px;color:var(--ink)}
+article p{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0 0 10px;max-width:62ch}
+article p:last-child{margin-bottom:0}
+
+.result-box{
+  background:var(--tint-a);border:1px solid var(--tint-a-b);border-radius:12px;padding:18px 20px;margin-top:4px;
+}
+.result-box p{color:var(--ink)}
+
+.fig{margin:18px 0 26px}
+.fig img{width:100%;border-radius:10px;border:1px solid var(--border);display:block}
+.fig figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+.fig-pair{display:flex;gap:14px;flex-wrap:wrap}
+.fig-pair .fig{flex:1;min-width:220px;margin:0}
+
+.foot-contact{
+  margin-top:40px;padding-top:20px;border-top:1px solid var(--border);
+  display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);
+}
+.foot-contact span{display:flex;align-items:center;gap:6px}
+.foot-contact svg{width:14px;height:14px;color:var(--petroleo)}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<g id="ic-compass"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 6l1.8 4.2L18 12l-4.2 1.8L12 18l-1.8-4.2L6 12l4.2-1.8z" fill="currentColor"/></g>
+<g id="ic-case"><rect x="3" y="7" width="18" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 7v12M12 7v12M16.5 7v12M3 12h18" fill="none" stroke="currentColor" stroke-width="1.1"/></g>
+<g id="ic-li"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8.3" r="1.3" fill="currentColor"/><path d="M8 11v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 17v-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 13.5c0-1.5 1-2.3 2.1-2.3 1.1 0 1.9.8 1.9 2.3V17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-mail"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-chat"><path d="M12 3.6c-4.7 0-8.4 3.6-8.4 8 0 1.8.6 3.4 1.7 4.7L4.3 20l3.9-1.1c1.2.6 2.5.9 3.8.9 4.7 0 8.4-3.6 8.4-8s-3.7-8.2-8.4-8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.2 10.1c0 2.7 2.2 4.9 4.9 4.9.4 0 .7-.3.7-.7v-.8c0-.3-.2-.5-.4-.6l-1.2-.4c-.2-.1-.5 0-.6.2l-.3.4c-.9-.5-1.6-1.2-2.1-2.1l.4-.3c.2-.1.3-.4.2-.6l-.4-1.2c-.1-.2-.3-.4-.6-.4h-.8c-.4 0-.7.3-.8.7z" fill="currentColor"/></g>
+<g id="ic-back"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+</defs>
+</svg>
+
+<div class="shell">
+  <aside class="side">
+    <div class="brand-block">
+      <svg><use href="#ic-compass"/></svg>
+      <div class="name">Pietro<br>Reyes Moreno</div>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="side-contact">
+      <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
+      <span><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</span>
+      <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="article">
+      <a class="back" href="index.html#proyectos"><svg><use href="#ic-back"/></svg>Volver a proyectos</a>
+
+      <div class="case-head">
+        <span class="eyebrow">Digitalización y estandarización · Caso 03</span>
+        <h1>Panel de seguimiento documental y KPI de cumplimiento</h1>
+        <p class="dek">De un Excel diario cruzado a mano a un panel siempre actualizado, con adopción total del equipo en un mes.</p>
+        <div class="badges"><span class="badge dhl"><svg><use href="#ic-case"/></svg>DHL Global Forwarding</span></div>
+      </div>
+
+      <div class="meta-row">
+        <div><span>Rol</span><p>Propuesta de la migración; diseño, construcción e implementación del flujo y el KPI</p></div>
+        <div><span>Herramientas</span><p>SharePoint · Excel (proceso anterior)</p></div>
+        <div><span>Estado</span><p>En producción, estándar del equipo</p></div>
+      </div>
+
+      <article>
+        <section>
+          <h2>El problema</h2>
+          <p>El equipo revisaba cada embarque cruzando manualmente un reporte Excel contra el mismo reporte del día anterior. Antes de poder trabajar con los datos había que hacer una consulta, darle formato al reporte, cruzar la información con BuscarV —resolviendo a menudo algún error de búsqueda—, armar una tabla dinámica, reordenar la información y verificar que los comentarios de días anteriores se hubieran mantenido. Todo esto antes de empezar a trabajar realmente con la data del día: entre 30 y 45 minutos diarios por persona (estimado por cada coordinador y luego cronometrado durante varios días para obtener un promedio real).</p>
+          <p>Dejar un comentario en una Orden de Embarque (SO) era otro proceso aparte: había que salir de la tabla dinámica, buscar la SO en la tabla de datos cruda, avanzar hasta la última columna, escribir el comentario, copiarlo y pegarlo manualmente en todas las filas correspondientes a esa misma SO.</p>
+          <div class="fig-pair">
+            <figure class="fig">
+              <img src="img/excel-cruce-manual.jpg" alt="Reporte Excel diario usado para el cruce manual de embarques">
+              <figcaption>El reporte diario que había que descargar y cruzar a mano.</figcaption>
+            </figure>
+            <figure class="fig">
+              <img src="img/tabla-dinamica.jpg" alt="Tabla dinámica armada manualmente a partir del reporte">
+              <figcaption>La tabla dinámica que había que rearmar cada día antes de poder trabajar.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section>
+          <h2>Qué hice y por qué</h2>
+          <p>Propuse migrar el seguimiento a SharePoint y, junto con el equipo, diseñé y construí el flujo de datos consolidados que reemplazó todo ese proceso manual, con dos actualizaciones automáticas diarias —a las 7:00 y a las 13:00— programadas para que la información estuviera lista cuando el equipo llega en la mañana y al volver de almorzar.</p>
+        </section>
+
+        <section>
+          <h2>El resultado</h2>
+          <div class="result-box">
+            <p>Hoy el coordinador no gasta tiempo cargando ni cruzando datos — solo revisa y registra comentarios o cambios manuales. Todo el equipo adoptó el flujo en alrededor de un mes, incluyendo el traspaso completo desde las planillas manuales.</p>
+          </div>
+          <figure class="fig">
+            <img src="img/panel-sharepoint.jpg" alt="Panel de seguimiento en SharePoint, filtrado por coordinador y semana ETD">
+            <figcaption>El panel hoy: permite filtrar por coordinador, marca, semana ETD u orden de embarque, lo que facilita consolidar la carga de marcas pequeñas que antes se coordinaba solo por correo. También estandarizó los estados de seguimiento para todo el equipo, dando visibilidad general a supervisores y jefatura.</figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>Qué aprendí</h2>
+          <p>Un cambio de herramienta no basta si no resuelve también los pasos invisibles del proceso —como dejar un comentario—. Diseñar el flujo completo, no solo la carga de datos, fue lo que hizo que el equipo lo adoptara sin resistencia.</p>
+        </section>
+      </article>
+
+      <div class="foot-contact">
+        <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
+        <span><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</span>
+        <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
+      </div>
+    </div>
+  </main>
+</div>

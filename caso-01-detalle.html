@@ -1,0 +1,214 @@
+<title>Automatización OC↔PO</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Página de detalle de caso — mismo sistema visual del boceto de portada (petróleo/turquesa/Sora), columna de lectura ~65ch. */
+:root{
+  --petroleo:#155E75; --petroleo-dark:#0E4A5E; --turquesa:#40E0D0;
+  --ink:#10303B; --paper:#FFFFFF; --tint-a:#EAFBF8; --tint-a-b:#BFEDE6;
+  --muted:#5C7A82; --border:#E1EDEE;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif}
+.shell{display:flex;min-height:100vh}
+@media (max-width:760px){ .shell{flex-direction:column;min-height:0} }
+
+.side{
+  width:230px;flex:none;background:var(--petroleo);color:#EAFBF8;
+  display:flex;flex-direction:column;gap:28px;
+  padding:28px 20px calc(20px + env(safe-area-inset-bottom,0px));
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+}
+@media (max-width:760px){
+  .side{width:100%;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;flex-wrap:wrap}
+  .side nav{flex-direction:row!important;gap:14px}
+  .side .side-contact{display:none}
+}
+.brand-block{display:flex;align-items:center;gap:10px}
+.brand-block svg{width:26px;height:26px;color:var(--turquesa)}
+.brand-block .name{font-family:'Sora',sans-serif;font-weight:600;font-size:15px;line-height:1.25}
+.side nav{display:flex;flex-direction:column;gap:14px;font-family:'Sora',sans-serif;font-size:13px}
+.side nav a{color:#CFEFEA;text-decoration:none;opacity:.85}
+.side-contact{margin-top:auto;display:flex;flex-direction:column;gap:11px;font-size:12px;color:#CFEFEA}
+.side-contact span{display:flex;align-items:center;gap:7px}
+.side-contact svg{width:14px;height:14px;flex:none;color:var(--turquesa)}
+
+.main{flex:1;min-width:0}
+.article{max-width:680px;margin:0 auto;padding:36px 24px calc(60px + env(safe-area-inset-bottom,0px))}
+.back{
+  display:inline-flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-size:12.5px;
+  color:var(--petroleo);text-decoration:none;font-weight:600;margin-bottom:22px;
+}
+.back svg{width:13px;height:13px}
+
+.case-head .eyebrow{font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--petroleo)}
+.case-head h1{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:28px;line-height:1.2;margin:8px 0 10px;text-wrap:balance;
+}
+.case-head .dek{font-size:15px;color:var(--muted);line-height:1.55;margin:0 0 18px;max-width:60ch}
+.badges{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.badge{
+  display:flex;align-items:center;gap:5px;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;
+  padding:5px 10px;border-radius:20px;
+}
+.badge svg{width:11px;height:11px;flex:none}
+.badge.dhl{background:var(--petroleo-dark);color:#fff}
+
+.meta-row{
+  display:flex;gap:24px;flex-wrap:wrap;padding:14px 0;margin-bottom:28px;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.meta-row div{font-size:12px}
+.meta-row span{display:block;font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--petroleo);margin-bottom:3px}
+.meta-row p{margin:0;color:var(--ink)}
+
+article section{margin-bottom:28px}
+article h2{font-family:'Sora',sans-serif;font-size:16px;font-weight:600;margin:0 0 10px;color:var(--ink)}
+article p{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0 0 10px;max-width:62ch}
+article p:last-child{margin-bottom:0}
+
+.result-box{
+  background:var(--tint-a);border:1px solid var(--tint-a-b);border-radius:12px;padding:18px 20px;margin-top:4px;
+}
+.result-box p{color:var(--ink)}
+
+.fig{margin:18px 0 26px}
+.fig img{width:100%;border-radius:10px;border:1px solid var(--border);display:block}
+.fig figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+.more{margin-top:40px;padding-top:24px;border-top:1px solid var(--border)}
+.more summary{
+  cursor:pointer;font-family:'Sora',sans-serif;font-weight:600;font-size:14px;color:var(--petroleo);
+  list-style:none;display:flex;align-items:center;gap:6px;
+}
+.more summary::-webkit-details-marker{display:none}
+.more summary svg{width:12px;height:12px;transition:transform .15s}
+.more[open] summary svg{transform:rotate(90deg)}
+.more .intro{font-size:13px;color:var(--muted);margin:12px 0 22px;max-width:60ch}
+.behind-grid{display:flex;flex-direction:column;gap:22px}
+
+.foot-contact{
+  margin-top:40px;padding-top:20px;border-top:1px solid var(--border);
+  display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);
+}
+.foot-contact span{display:flex;align-items:center;gap:6px}
+.foot-contact svg{width:14px;height:14px;color:var(--petroleo)}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<g id="ic-compass"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 6l1.8 4.2L18 12l-4.2 1.8L12 18l-1.8-4.2L6 12l4.2-1.8z" fill="currentColor"/></g>
+<g id="ic-case"><rect x="3" y="7" width="18" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 7v12M12 7v12M16.5 7v12M3 12h18" fill="none" stroke="currentColor" stroke-width="1.1"/></g>
+<g id="ic-li"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8.3" r="1.3" fill="currentColor"/><path d="M8 11v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 17v-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 13.5c0-1.5 1-2.3 2.1-2.3 1.1 0 1.9.8 1.9 2.3V17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-mail"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-chat"><path d="M12 3.6c-4.7 0-8.4 3.6-8.4 8 0 1.8.6 3.4 1.7 4.7L4.3 20l3.9-1.1c1.2.6 2.5.9 3.8.9 4.7 0 8.4-3.6 8.4-8s-3.7-8.2-8.4-8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.2 10.1c0 2.7 2.2 4.9 4.9 4.9.4 0 .7-.3.7-.7v-.8c0-.3-.2-.5-.4-.6l-1.2-.4c-.2-.1-.5 0-.6.2l-.3.4c-.9-.5-1.6-1.2-2.1-2.1l.4-.3c.2-.1.3-.4.2-.6l-.4-1.2c-.1-.2-.3-.4-.6-.4h-.8c-.4 0-.7.3-.8.7z" fill="currentColor"/></g>
+<g id="ic-back"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-chevron"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+</defs>
+</svg>
+
+<div class="shell">
+  <aside class="side">
+    <div class="brand-block">
+      <svg><use href="#ic-compass"/></svg>
+      <div class="name">Pietro<br>Reyes Moreno</div>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="side-contact">
+      <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
+      <span><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</span>
+      <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="article">
+      <a class="back" href="index.html#proyectos"><svg><use href="#ic-back"/></svg>Volver a proyectos</a>
+
+      <div class="case-head">
+        <span class="eyebrow">Optimización y mejora continua · Caso 01</span>
+        <h1>Automatización de consultas OC↔PO</h1>
+        <p class="dek">De una semana a un día en la creación de la Orden de Embarque, con un piloto operativo en menos de una semana mientras el equipo de implementación estimaba ocho meses para una solución completa.</p>
+        <div class="badges"><span class="badge dhl"><svg><use href="#ic-case"/></svg>DHL Global Forwarding</span></div>
+      </div>
+
+      <div class="meta-row">
+        <div><span>Rol</span><p>Propuesta, diseño y construcción del piloto</p></div>
+        <div><span>Herramientas</span><p>Google Sheets · Apps Script</p></div>
+        <div><span>Estado</span><p>En producción, estándar del equipo</p></div>
+      </div>
+
+      <article>
+        <section>
+          <h2>El problema</h2>
+          <p>Un proveedor internacional necesitaba conocer la Orden de Compra (OC) asociada a su Orden de Producción (PO) antes de poder generar la Orden de Embarque (Shipping Order). Esta consulta se repetía cada semana con hasta tres proveedores distintos, cada uno enviando entre una y tres solicitudes, y las listas de POs a revisar podían ir de un puñado hasta más de cien. Todo se resolvía por correo, y el ciclo completo podía tomar casi toda la semana: el proveedor consultaba el lunes, el coordinador revisaba la información manualmente y respondía ese mismo martes, el proveedor veía la respuesta el miércoles y generaba la SO justo a tiempo para que se reflejara en el sistema el jueves y se cargara a seguimiento el viernes — el mismo día en que, por requerimiento naviero, debía enviarse la solicitud de allocation (espacio en nave) para la semana subsiguiente. Quedaba un solo día de margen, y cualquier imprevisto en el camino complicaba toda la gestión.</p>
+          <figure class="fig">
+            <img src="img/correo-original.jpg" alt="Correo semanal donde el proveedor solicitaba el cruce de OC y PO antes del piloto">
+            <figcaption>Así llegaba la consulta antes del piloto: por correo, entre una y tres veces por semana, por cada proveedor.</figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>Qué hice y por qué</h2>
+          <p>El cuello de botella no era la información en sí, sino la espera por una respuesta manual. Propuse una herramienta de autoconsulta (Google Sheets + Google Apps Script) para que el proveedor pudiera resolver la relación OC↔PO por su cuenta, sin esperar un correo: puede pegar un listado completo de POs copiado directamente desde Excel, sin límite de cantidad, y consultar el estado de todas a la vez. El equipo de implementación había estimado unos ocho meses para una solución completa; en lugar de esperar ese desarrollo, pedí autorización para construir un piloto de alcance acotado — quedó operativo en menos de una semana.</p>
+          <figure class="fig">
+            <img src="img/herramienta-consulta.jpg" alt="Herramienta de autoconsulta de OC por PO, probada con casos límite antes de ponerla en manos de los proveedores">
+            <figcaption>La herramienta en funcionamiento — probada con casos límite (formatos inválidos, PO inexistentes) antes de ponerla en manos de los proveedores.</figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>El resultado</h2>
+          <div class="result-box">
+            <p>El piloto pasó a producción y hoy es la plataforma de consulta estándar del equipo, con actualización semanal. El proveedor pasó de generar la Orden de Embarque el miércoles (o jueves, en muchos casos) a generarla el lunes (o martes, a más tardar) — tres días completos de margen frente al plazo semanal de allocation naviero. Las excepciones (POs sin OC asociada, normalmente de muestras o marketing) se resuelven apenas se detectan.</p>
+          </div>
+          <p>El libro de consulta original también se mantiene vivo: hoy lo uso para búsquedas manuales rápidas, y cada consulta sobre una PO sin OC asociada queda registrada con fecha y hora, lo que ayuda a priorizar su creación.</p>
+        </section>
+
+        <section>
+          <h2>Qué aprendí</h2>
+          <p>No siempre la solución correcta es la más completa. Un piloto acotado, operativo en menos de una semana, resolvió el problema real antes de que un desarrollo de ocho meses llegara a existir — y terminó siendo la base de lo que el equipo usa hoy.</p>
+        </section>
+      </article>
+
+      <details class="more">
+        <summary><svg><use href="#ic-chevron"/></svg>Cómo funciona por dentro</summary>
+        <p class="intro">Para quien quiera ver el detalle técnico completo del flujo detrás de la herramienta.</p>
+        <div class="behind-grid">
+          <figure class="fig">
+            <img src="img/plantilla-carga.jpg" alt="Plantilla donde se carga la información enviada por el proveedor">
+            <figcaption>Acá se pega la información que envía el proveedor. Al cargarla, la plantilla reconoce los encabezados de cada columna —aunque no lleguen siempre en el mismo orden— y los asigna automáticamente.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="img/base-datos.jpg" alt="Base de datos consolidada de la consulta">
+            <figcaption>Una vez cargada, la información queda guardada en este formato: la base de datos de la consulta, siempre actualizada.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="img/formulario-consulta.jpg" alt="Formulario donde el proveedor ingresa las PO a consultar">
+            <figcaption>Así consulta el proveedor: pega cualquier cantidad de PO, separadas por salto de línea, y obtiene el estado de todas a la vez.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="img/log-pendientes.jpg" alt="Registro de consultas sobre PO sin OC asociada">
+            <figcaption>Cada consulta sobre una PO que todavía no tiene OC asociada queda registrada con fecha y hora — esto ayuda a priorizar qué órdenes crear primero.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="img/libro-manual.jpg" alt="Libro de consulta manual, usado hoy para búsquedas rápidas">
+            <figcaption>El libro de consulta original también se mantiene vivo, hoy para búsquedas manuales rápidas.</figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <div class="foot-contact">
+        <span><svg><use href="#ic-li"/></svg>LinkedIn</span>
+        <span><svg><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</span>
+        <span><svg><use href="#ic-chat"/></svg>WhatsApp</span>
+      </div>
+    </div>
+  </main>
+</div>
