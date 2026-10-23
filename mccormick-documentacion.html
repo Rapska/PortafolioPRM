@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estandarización documental nacional</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Misma identidad y estructura que las páginas de detalle anteriores. */
+:root{
+  --petroleo:#155E75; --petroleo-dark:#0E4A5E; --turquesa:#40E0D0;
+  --ink:#10303B; --paper:#FFFFFF; --tint-a:#EAFBF8; --tint-a-b:#BFEDE6;
+  --muted:#5C7A82; --border:#E1EDEE;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif}
+.shell{display:flex;min-height:100vh}
+@media (max-width:760px){ .shell{flex-direction:column;min-height:0} }
+
+.side{
+  width:230px;flex:none;background:var(--petroleo);color:#EAFBF8;
+  display:flex;flex-direction:column;gap:28px;
+  padding:28px 20px calc(20px + env(safe-area-inset-bottom,0px));
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+}
+@media (max-width:760px){
+  .side{width:100%;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;flex-wrap:wrap}
+  .side nav{flex-direction:row!important;gap:14px}
+  .side .side-contact{display:none}
+}
+.brand-block{display:flex;align-items:center;gap:10px}
+.brand-block svg{width:26px;height:26px;color:var(--turquesa)}
+.brand-block .name{font-family:'Sora',sans-serif;font-weight:600;font-size:15px;line-height:1.25}
+.side nav{display:flex;flex-direction:column;gap:14px;font-family:'Sora',sans-serif;font-size:13px}
+.side nav a{color:#CFEFEA;text-decoration:none;opacity:.85}
+.side-contact{margin-top:auto;display:flex;flex-direction:column;gap:11px;font-size:12px;color:#CFEFEA}
+.side-contact span,.side-contact a{display:flex;align-items:center;gap:7px;color:inherit;text-decoration:none}
+.side-contact svg{width:14px;height:14px;flex:none;color:var(--turquesa)}
+
+.main{flex:1;min-width:0}
+.article{max-width:680px;margin:0 auto;padding:36px 24px calc(60px + env(safe-area-inset-bottom,0px))}
+.top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.back{
+  display:inline-flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-size:12.5px;
+  color:var(--petroleo);text-decoration:none;font-weight:600;
+}
+.back svg{width:13px;height:13px}
+.lang{
+  font-family:'Sora',sans-serif;font-size:11px;font-weight:600;color:var(--petroleo);
+  border:1px solid var(--tint-a-b);background:var(--tint-a);border-radius:20px;padding:5px 12px;
+  text-decoration:none;flex:none;
+}
+
+.case-head .eyebrow{font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--petroleo)}
+.case-head h1{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:28px;line-height:1.2;margin:8px 0 10px;text-wrap:balance;
+}
+.case-head .dek{font-size:15px;color:var(--muted);line-height:1.55;margin:0 0 18px;max-width:60ch}
+.badges{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.badge{
+  display:flex;align-items:center;gap:5px;font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;
+  padding:5px 10px;border-radius:20px;
+}
+.badge.mcc{background:var(--petroleo-dark);color:#fff}
+
+.meta-row{
+  display:flex;gap:24px;flex-wrap:wrap;padding:14px 0;margin-bottom:28px;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.meta-row div{font-size:12px}
+.meta-row span{display:block;font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--petroleo);margin-bottom:3px}
+.meta-row p{margin:0;color:var(--ink)}
+
+article section{margin-bottom:28px}
+article h2{font-family:'Sora',sans-serif;font-size:16px;font-weight:600;margin:0 0 10px;color:var(--ink)}
+article p{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0 0 10px;max-width:62ch}
+article p:last-child{margin-bottom:0}
+
+.result-box{
+  background:var(--tint-a);border:1px solid var(--tint-a-b);border-radius:12px;padding:18px 20px;margin-top:4px;
+}
+.result-box p{color:var(--ink)}
+
+.foot-contact{
+  margin-top:40px;padding-top:20px;border-top:1px solid var(--border);
+  display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);
+}
+.foot-contact span,.foot-contact a{display:flex;align-items:center;gap:6px;color:inherit;text-decoration:none}
+.foot-contact svg{width:14px;height:14px;color:var(--petroleo)}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<g id="ic-compass"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 6l1.8 4.2L18 12l-4.2 1.8L12 18l-1.8-4.2L6 12l4.2-1.8z" fill="currentColor"/></g>
+<g id="ic-li"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8.3" r="1.3" fill="currentColor"/><path d="M8 11v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 17v-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 13.5c0-1.5 1-2.3 2.1-2.3 1.1 0 1.9.8 1.9 2.3V17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-mail"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="ic-chat"><path d="M12 3.6c-4.7 0-8.4 3.6-8.4 8 0 1.8.6 3.4 1.7 4.7L4.3 20l3.9-1.1c1.2.6 2.5.9 3.8.9 4.7 0 8.4-3.6 8.4-8s-3.7-8.2-8.4-8.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.2 10.1c0 2.7 2.2 4.9 4.9 4.9.4 0 .7-.3.7-.7v-.8c0-.3-.2-.5-.4-.6l-1.2-.4c-.2-.1-.5 0-.6.2l-.3.4c-.9-.5-1.6-1.2-2.1-2.1l.4-.3c.2-.1.3-.4.2-.6l-.4-1.2c-.1-.2-.3-.4-.6-.4h-.8c-.4 0-.7.3-.8.7z" fill="currentColor"/></g>
+<g id="ic-back"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+</defs>
+</svg>
+
+<div class="shell">
+  <aside class="side">
+    <div class="brand-block">
+      <svg viewBox="0 0 24 24"><use href="#ic-compass"/></svg>
+      <div class="name">Pietro<br>Reyes Moreno</div>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="acerca-de-mi.html">Acerca de mí</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="side-contact">
+      <span><svg viewBox="0 0 24 24"><use href="#ic-li"/></svg>LinkedIn</span>
+      <a href="mailto:reyesmoreno.p@gmail.com"><svg viewBox="0 0 24 24"><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</a>
+      <a href="https://wa.me/56955259262" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#ic-chat"/></svg>WhatsApp</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="article">
+      <div class="top-row">
+        <a class="back" href="index.html#otros-casos"><svg viewBox="0 0 24 24"><use href="#ic-back"/></svg>Volver a otros casos</a>
+        <a class="lang" href="mccormick-documentacion-en.html">EN</a>
+      </div>
+
+      <div class="case-head">
+        <span class="eyebrow">Otros casos · MC Cormick Chile</span>
+        <h1>Estandarización de requisitos documentales a nivel nacional</h1>
+        <p class="dek">De incidencias recurrentes de ingreso a sucursales por documentación faltante, a una carpeta universal por trabajador con triple respaldo.</p>
+        <div class="badges"><span class="badge mcc">MC Cormick Chile</span></div>
+      </div>
+
+      <div class="meta-row">
+        <div><span>Rol</span><p>Supervisor de Operaciones</p></div>
+        <div><span>Contexto</span><p>Empresa familiar de mantención de edificios</p></div>
+        <div><span>Periodo</span><p>2014 – 2017</p></div>
+      </div>
+
+      <article>
+        <section>
+          <h2>El problema</h2>
+          <p>MC Cormick Chile gestionaba la mantención integral de las sucursales de CMR a nivel nacional — pintura, cerrajería, mobiliario, electricidad, entre otros servicios —, con equipos técnicos que salían a terreno en turnos nocturnos. Era frecuente que el equipo se presentara en una sucursal y no pudiera ingresar: la sucursal pedía documentación adicional, o el equipo de seguridad del lugar no tenía registrada la información necesaria. Cada sucursal parecía pedir algo distinto, y no había un estándar común.</p>
+        </section>
+
+        <section>
+          <h2>Qué hice y por qué</h2>
+          <p>Hice un levantamiento de los requisitos de ingreso de todas las sucursales a nivel nacional y diseñé una carpeta documental universal por trabajador, que incluía cédula de identidad, certificado de antecedentes, certificado de altura, contrato de trabajo y derecho a saber, entre otros. Implementé un proceso de triple respaldo: el líder de cada equipo portaba la carpeta física completa del equipo, el mismo set de documentos se enviaba por correo a la sucursal antes de la llegada, y se cargaba en la plataforma correspondiente cuando la sucursal tenía una.</p>
+        </section>
+
+        <section>
+          <h2>El resultado</h2>
+          <div class="result-box">
+            <p>Las incidencias de ingreso por documentación cayeron en un 95%. El proceso se volvió el estándar para cualquier salida a terreno, sin importar qué sucursal específica se visitara.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Qué aprendí</h2>
+          <p>Un proceso que falla de forma distinta en cada lugar generalmente no es un problema de ejecución, sino de falta de estándar. Levantar el requisito real de cada sucursal, antes de diseñar la solución, fue lo que permitió que la carpeta universal funcionara en todos los casos, no solo en los más comunes.</p>
+        </section>
+      </article>
+
+      <div class="foot-contact">
+        <span><svg viewBox="0 0 24 24"><use href="#ic-li"/></svg>LinkedIn</span>
+        <a href="mailto:reyesmoreno.p@gmail.com"><svg viewBox="0 0 24 24"><use href="#ic-mail"/></svg>reyesmoreno.p@gmail.com</a>
+        <a href="https://wa.me/56955259262" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#ic-chat"/></svg>WhatsApp</a>
+      </div>
+    </div>
+  </main>
+</div>

@@ -92,7 +92,9 @@ body{
 .oc-item{
   padding:14px 16px;border-left:3px solid var(--turquesa);
   background:var(--tint-a);border-radius:0 10px 10px 0;
+  display:block;text-decoration:none;transition:transform .12s,box-shadow .12s;
 }
+a.oc-item:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(21,94,117,.1)}
 .oc-item h4{margin:0 0 4px;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink)}
 .oc-item p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.5}
 
@@ -189,24 +191,25 @@ body{
       </a>
     </div>
 
-    <div class="section-label">Other cases</div>
+    <div class="section-label" id="other-cases">Other cases</div>
     <div class="other-cases">
       <div class="oc-item">
         <h4>Senior Coordinator Backup</h4>
         <p>A month as backup for my team's Senior Coordinator (6 people) — integrative negotiation that ended up being adopted as a general rule, not just a one-off fix.</p>
       </div>
-      <div class="oc-item">
+      <a class="oc-item" href="hapag-contingencia-en.html">
         <h4>Payment System Contingency at Hapag-Lloyd</h4>
         <p>When a system outage hit, I diagnosed the real cause and coordinated with the Collections team on an alternative procedure that let us keep responding to clients consistently.</p>
-      </div>
-      <div class="oc-item">
+      </a>
+      <a class="oc-item" href="mccormick-documentacion-en.html">
         <h4>Nationwide Documentation Standardization at MC Cormick</h4>
         <p>Redesigned the branch entry documentation requirements nationwide, cutting entry incidents by 95%.</p>
-      </div>
-      <div class="oc-item">
+      </a>
+      <a class="oc-item" href="mccormick-herramientas-en.html">
         <h4>Tool Inventory Control at MC Cormick</h4>
         <p>Designed a per-team tool inventory control system that minimized equipment losses.</p>
-      </div>
+      </a>
+    </div>
     </div>
 
     <footer class="site-footer" id="contact">
