@@ -87,12 +87,14 @@ body{
 .badge.dhl{background:var(--petroleo-dark);color:#fff}
 .badge.rapska{background:var(--turquesa);color:var(--petroleo-dark)}
 
-.highlight{
-  margin:20px 24px 0;padding:16px 20px;border-left:3px solid var(--turquesa);
+.other-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:0 24px}
+@media (max-width:560px){ .other-cases{grid-template-columns:1fr} }
+.oc-item{
+  padding:14px 16px;border-left:3px solid var(--turquesa);
   background:var(--tint-a);border-radius:0 10px 10px 0;
 }
-.highlight .eyebrow{font-family:'Sora',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.07em;color:var(--petroleo)}
-.highlight p{margin:6px 0 0;font-size:13px;color:var(--ink);line-height:1.55;max-width:70ch}
+.oc-item h4{margin:0 0 4px;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink)}
+.oc-item p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.5}
 
 .site-footer{
   margin-top:48px;background:var(--petroleo);color:#EAFBF8;
@@ -187,9 +189,24 @@ body{
       </a>
     </div>
 
-    <div class="highlight">
-      <span class="eyebrow">Liderazgo</span>
-      <p>Un mes como backup del Coordinador Senior de mi equipo (6 personas) — negociación integrativa que terminó adoptándose como norma general, no solo como solución puntual.</p>
+    <div class="section-label">Otros casos</div>
+    <div class="other-cases">
+      <div class="oc-item">
+        <h4>Backup Coordinador Senior</h4>
+        <p>Un mes como backup del Coordinador Senior de mi equipo (6 personas) — negociación integrativa que terminó adoptándose como norma general, no solo como solución puntual.</p>
+      </div>
+      <div class="oc-item">
+        <h4>Contingencia de pagos en Hapag-Lloyd</h4>
+        <p>Ante una caída de sistema, diagnostiqué la causa real y coordiné con Collections un procedimiento alternativo que permitió al equipo seguir respondiendo a los clientes de forma consistente.</p>
+      </div>
+      <div class="oc-item">
+        <h4>Documentación nacional en MC Cormick</h4>
+        <p>Rediseñé los requisitos documentales de ingreso a sucursales a nivel nacional, reduciendo las incidencias de ingreso en un 95%.</p>
+      </div>
+      <div class="oc-item">
+        <h4>Control de herramientas en MC Cormick</h4>
+        <p>Diseñé un sistema de control de inventario de herramientas por equipo que minimizó las pérdidas del equipo técnico.</p>
+      </div>
     </div>
 
     <footer class="site-footer" id="contacto">
